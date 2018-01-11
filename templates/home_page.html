@@ -1,0 +1,18 @@
+<html lang="en">
+    <head>
+     </head>
+    <body>
+          <h1>{{ title }}</h1>
+          <h2>{{content}}</h2>
+          <h2>{{user_ip}}</h2>
+          
+		  <form method='POST' action=''> {% csrf_token %}
+		  {{ form }}
+		  <input type="checkbox" name="language" value="English" /> English
+		  <input type="checkbox" name="language" value="Spanish" /> Spanish
+		  <input type="checkbox" name="language" value="Mandarin" /> Mandarin
+		  <input type="checkbox" name="language" value="Arabic" /> Arabic
+		  <button type='submit' class='btn btn-default'>Submit</button>
+		  </form>
+          </body>
+  </html>

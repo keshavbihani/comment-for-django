@@ -1,0 +1,38 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	{{post.title}}
+	</br>
+	{{post.content}}</br>
+	{{post.user}}|{{post.publish}}
+	</br>
+	<hr></hr>
+
+<div>
+	
+	<h2>Comments</h2>
+	<form method='POST' action='.'> {% csrf_token %}
+		{{ comment_form }}
+		<input type='submit' value='Comment' >
+	</form></br></br>
+
+		{% for comment in comments %}
+				<script>
+				$(document).ready(function() {
+			        generatecommentHtml(comments);
+				});
+				function generatecommentHtml(comments)
+				{
+					
+				}
+				</script>
+				{{comment.content}}</br>
+				<small>-{{comment.user}} | {{comment.publish|timesince}} ago</small>
+				</br></br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<form method='POST' action='.'> {% csrf_token %}
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	{{ comment_form }}
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='hidden' name='parent_id' value='{{comment.id}}'>
+				<input type='submit' value='Reply' >
+				</form>
+		{% endfor %}
+
+	
+</div>
